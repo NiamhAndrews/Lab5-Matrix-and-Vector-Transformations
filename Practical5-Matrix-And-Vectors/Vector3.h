@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string.h>
 #include <math.h>
+#define PI           3.14159265358979323846
 
 class Vector3
 {
@@ -11,8 +12,8 @@ public:
 	double y;
 	double z;
 
-
 	
+	/*
 	double X
 	{
 		get { return x; }
@@ -28,7 +29,7 @@ public:
 		get { return z; }
 		set { z = value; }
 	}
-	
+	*/
 
 
 	// Constructor 1
@@ -37,20 +38,23 @@ public:
 	// Constructor 2
 	Vector3(double x1, double y1, double z1);
 
+	Vector3(Vector3 V, Vector3 V2);
+
+
 	// Constructor 3
 	Vector3(Vector3 V);
 
 
 
-	Vector3 operator +(Vector3 V1, Vector3 V2);
+	Vector3 operator +(Vector3 V1);
 
 
-	Vector3 operator -(Vector3 V1, Vector3 V2);
+	Vector3 operator -(Vector3 V1);
 
 
 	Vector3 operator -(Vector3 V);
 
-	Vector3 operator *(Vector3 V1, Vector3 V2);
+	Vector3 operator *(Vector3 V1);
 
 	Vector3 operator *(double k, Vector3 V1);
 
@@ -71,7 +75,7 @@ public:
 
 	void Normalise();
 
-
+	void Rotate(Vector3 pt, int t_angle);
 
 
 
