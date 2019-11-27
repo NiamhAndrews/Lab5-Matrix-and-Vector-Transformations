@@ -8,23 +8,7 @@ double x;
 double y;
 double z;
 
-/*
-double X
-{
-	get { return x; }
-	set { x = value; }
-}
-double Y
-{
-	get { return y; }
-	set { y = value; }
-}
-double Z
-{
-	get { return z; }
-	set { z = value; }
-}
-*/
+
 
 // Constructor 1
 Vector3::Vector3() :
@@ -53,70 +37,52 @@ Vector3::Vector3(Vector3 V, Vector3 V2)
 	z = V2.z;
 }
 
-Vector3::Vector3(Vector3 V)
-{  // To allow other values for X, Y and Z to be declared
-	x = V.x;
-	y = V.y;
-	z = V.z;
-}
-
-
 
 
 
 //trying something
-Vector3 Vector3::operator +(Vector3 V1, Vector3 V2)
+Vector3 Vector3::operator +(Vector3 V)
 {  // An overloaded operator + to return the sum of 2 vectors
-	return new Vector3(V1.x + V2.x, V1.y + V2.y, V1.z + V2.z);
-}
-//Trying something
-Vector3 Vector3::operator-(Vector3 V)
-{
-	return Vector3();
+	return Vector3(x + V.x, y + V.y, z + V.z);
 }
 
 
 
-
-
-
-static Vector3 operator -(Vector3 V1, Vector3 V2)
+Vector3 Vector3::operator -(Vector3 V)
 { // An overloaded operator - to return the difference of 2 vectors
-	return new Vector3(V1.x - V2.x, V1.y - V2.y, V1.z - V2.z);
+	return Vector3(x - V.x, y - V.y, z - V.z);
 }
 
-static Vector3 operator -(Vector3 V)
+
+Vector3 Vector3::operator -()
 {// An overloaded operator - to return the negation of a single vector
-	Vector3 V1 = new Vector3();
-	V1.x = -V.x;
-	V1.y = -V.y;
-	V1.z = -V.z;
-	return V1;
+	return { -x, -y, -z };
 }
 
-static double operator *(Vector3 V1, Vector3 V2)
+
+double Vector3::operator *(Vector3 V)
 {// An overloaded operator * to return the scalar product of 2 vectors
-	return (V1.x * V2.x + V1.y * V2.y + V1.z * V2.z);
+	return (x * V.x + y * V.y + z * V.z);
 }
 
-static Vector3 operator *(double k, Vector3 V1)
+Vector3 Vector3::operator *(double k)
 {// An overloaded operator * to return the product of a scalar by a vector
-	return new Vector3(V1.x * (float)k, V1.y * (float)k, V1.z * (float)k);
+	return Vector3(x * (float)k, y * (float)k, z * (float)k);
 }
 
-static Vector3 operator *(float k, Vector3 V1)
+Vector3 Vector3::operator *(float k)
 {// An overloaded operator * to return the product of a scalar by a vector
-	return new Vector3(V1.x * k, V1.y * k, V1.z * k);
+	return Vector3(x * k, y * k, z * k);
 }
 
-static Vector3 operator *(int k, Vector3 V1)
+Vector3 Vector3::operator *(int k)
 {// An overloaded operator * to return the product of a scalar by a vector
-	return new Vector3(V1.x * k, V1.y * k, V1.z * k);
+	return Vector3(x * k, y * k, z * k);
 }
 
-static Vector3 operator ^(Vector3 V1, Vector3 V2)
+Vector3 Vector3::operator ^(Vector3 V)
 {// An overloaded operator ^ to return the vector product of 2 vectors
-	return new Vector3(V1.y * V2.z - V1.z * V2.y, V1.z * V2.x - V1.x * V2.z, V1.x * V2.y - V1.y * V2.x);
+	return Vector3(y * V.z - z * V.y, z * V.x - x * V.z, x * V.y - y * V.x);
 }
 
 

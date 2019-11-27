@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include <string.h>
+#include <string>
 #include <math.h>
 #define PI           3.14159265358979323846
 
@@ -12,24 +12,6 @@ public:
 	double y;
 	double z;
 
-	
-	/*
-	double X
-	{
-		get { return x; }
-		set { x = value; }
-	}
-	double Y
-	{
-		get { return y; }
-		set { y = value; }
-	}
-	double Z
-	{
-		get { return z; }
-		set { z = value; }
-	}
-	*/
 
 
 	// Constructor 1
@@ -41,29 +23,25 @@ public:
 	Vector3(Vector3 V, Vector3 V2);
 
 
-	// Constructor 3
-	Vector3(Vector3 V);
 
-
-
-	Vector3 operator +(Vector3 V1);
-
-
-	Vector3 operator -(Vector3 V1);
+	Vector3 operator +(Vector3 V);
 
 
 	Vector3 operator -(Vector3 V);
 
-	Vector3 operator *(Vector3 V1);
 
-	Vector3 operator *(double k, Vector3 V1);
+	Vector3 operator -();
 
-	Vector3 operator *(float k, Vector3 V1);
+	double operator *(Vector3 V1);
 
-	Vector3 operator *(int k, Vector3 V1);
+	Vector3 operator *(double k);
+
+	Vector3 operator *(float k);
+
+	Vector3 operator *(int k);
 
 
-	Vector3 operator ^(Vector3 V1, Vector3 V2);
+	Vector3 operator ^(Vector3 V);
 
 
 
@@ -81,5 +59,5 @@ public:
 
 
 	std::string ToString();
-	
-}
+
+};
