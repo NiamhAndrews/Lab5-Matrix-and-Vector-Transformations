@@ -8,20 +8,18 @@ class Vector3
 {
 public:
 	// The class has three variables x, y and z 
-	double x;
-	double y;
-	double z;
-
+	float x;
+	float y;
+	float z;
 
 
 	// Constructor 1
 	Vector3();
 
 	// Constructor 2
-	Vector3(double x1, double y1, double z1);
+	Vector3(float x1, float y1, float z1);
 
 	Vector3(Vector3 V, Vector3 V2);
-
 
 
 	Vector3 operator +(Vector3 V);
@@ -32,7 +30,7 @@ public:
 
 	Vector3 operator -();
 
-	double operator *(Vector3 V1);
+	float operator *(Vector3 V1);
 
 	Vector3 operator *(double k);
 
@@ -40,21 +38,18 @@ public:
 
 	Vector3 operator *(int k);
 
-
 	Vector3 operator ^(Vector3 V);
 
 
 
 
+	float Length();
 
-	double Length();
-
-	double LengthSquared();
+	float LengthSquared();
 
 	void Normalise();
 
 	void Rotate(Vector3 pt, int t_angle);
-
 
 
 

@@ -8,24 +8,24 @@ class Quaternion
 {
 public:
 
-	double x, y, z, w;
+	float x, y, z, w;
 
 	Quaternion();
 
-	Quaternion(double _w, double _x, double _y, double _z);
+	Quaternion(float _w, float _x, float _y, float _z);
 
-	Quaternion(double _w, Vector3 v);
+	Quaternion(float _w, Vector3 v);
 
 	std::string ToString();
 
 
-	double Modulus();
+	float Modulus();
 
 	Quaternion Normalise();
 
 	Quaternion Conjugate();
 
-	void FromAxisAngle(Vector3 axis, double angleRadian);
+	void FromAxisAngle(Vector3 axis, float angleRadian);
 
 	Quaternion Multiply(Quaternion _q);
 
@@ -36,15 +36,9 @@ public:
 	// Multiplying q1 with q2 is meaning of doing q2 firstly then q1
 	Quaternion operator +(Quaternion q);
 
-	Quaternion operator -(Quaternion q1);
+	Quaternion operator -();
 
 	Quaternion operator -(Quaternion q);
-
-	Quaternion operator *(double s);
-
-	Quaternion operator *(float s);
-
-	Quaternion operator *(int s);
 
 	Quaternion operator *(double s);
 

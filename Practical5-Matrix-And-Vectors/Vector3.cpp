@@ -1,15 +1,5 @@
 #include "Vector3.h"
 
-
-
-		
-// The class has three variables x, y and z 
-double x;
-double y;
-double z;
-
-
-
 // Constructor 1
 Vector3::Vector3() :
 	x{ 0.0f },
@@ -20,7 +10,7 @@ Vector3::Vector3() :
 
 
 // Constructor 2
-Vector3::Vector3(double x1, double y1, double z1)
+Vector3::Vector3(float x1, float y1, float z1)
 { // To allow other values for X, Y and Z to be declared
 	x = x1;
 	y = y1;
@@ -36,8 +26,6 @@ Vector3::Vector3(Vector3 V, Vector3 V2)
 	y = V2.y;
 	z = V2.z;
 }
-
-
 
 
 //trying something
@@ -60,7 +48,7 @@ Vector3 Vector3::operator -()
 }
 
 
-double Vector3::operator *(Vector3 V)
+float Vector3::operator *(Vector3 V)
 {// An overloaded operator * to return the scalar product of 2 vectors
 	return (x * V.x + y * V.y + z * V.z);
 }
@@ -86,13 +74,13 @@ Vector3 Vector3::operator ^(Vector3 V)
 }
 
 
-double Vector3::Length()
+float Vector3::Length()
 {
 	// A method to return the length of the vector
 	return sqrt(x * x + y * y + z * z);
 }
 
-double Vector3::LengthSquared()
+float Vector3::LengthSquared()
 {
 	// A method to return the length squared of the vector
 	return (x * x + y * y + z * z);
@@ -104,7 +92,7 @@ void Vector3::Normalise()
 	// keeping the direction the same
 	if (Length() > 0.0)
 	{  // Check for divide by zero
-		double magnit = Length();
+		float magnit = Length();
 		x /= magnit;
 		y /= magnit;
 		z /= magnit;
@@ -117,6 +105,6 @@ void Vector3::Rotate(Vector3 pt, int t_angle)
 
 std::string Vector3::ToString()
 {
-	 std::string output = "(" + std::to_string(x) + "g3" + "," + std::to_string(y) + "g3" + "," + std::to_string(z) + "g3" + ")";
+	 std::string output = "( x : " + std::to_string(x) + ", y : " + std::to_string(y) + ", z :" + std::to_string(z) + ")";
 	 return output;
 }

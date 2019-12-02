@@ -9,15 +9,15 @@ class Matrix3
 
 public:
 	// The class has nine variables, 3 rows and 3 columns
-	double A11;
-	double A12;
-	double A13;
-	double A21;
-	double A22;
-	double A23;
-	double A31;
-	double A32;
-	double A33;
+	float A11;
+	float A12;
+	float A13;
+	float A21;
+	float A22;
+	float A23;
+	float A31;
+	float A32;
+	float A33;
 
 	// Constructor 1 create a zero matrix
 	Matrix3();
@@ -26,14 +26,14 @@ public:
 	Matrix3(Vector3 Row1, Vector3 Row2, Vector3 Row3);
 
 	// Constructor 3
-	Matrix3(double _A11, double _A12, double _A13,
-		double _A21, double _A22, double _A23,
-		double _A31, double _A32, double _A33);
+	Matrix3(float _A11, float _A12, float _A13,
+		float _A21, float _A22, float _A23,
+		float _A31, float _A32, float _A33);
 
 
 	Vector3 operator *(Vector3 V1);
 
-	Vector3 operator *(Vector3 V1);
+	Matrix3 operator *(Matrix3 M1);
 
 	Matrix3 Transpose(Matrix3 M1);
 
@@ -46,10 +46,8 @@ public:
 
 	Matrix3 operator *(double x);
 
-	Matrix3 operator *(Matrix3 M);
 
-
-	double Determinant(Matrix3 M1);
+	float Determinant(Matrix3 M1);
 
 
 	Vector3 Row(int i);
@@ -65,9 +63,9 @@ public:
 
 	Matrix3 Translate(int dx, int dy);
 
-	static Matrix3 Scale(int dx, int dy);
+	Matrix3 Matrix3Scale(int dx, int dy);
 
-	Matrix3 operator -(Matrix3 M1);
+	Matrix3 operator -();
 
 	Matrix3 RotationX(int _angle);
 

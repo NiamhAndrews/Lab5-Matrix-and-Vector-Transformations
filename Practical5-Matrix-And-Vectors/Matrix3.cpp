@@ -1,3 +1,4 @@
+
 #include "Matrix3.h"
 #define PI           3.14159265358979323846
 
@@ -29,10 +30,10 @@ Matrix3::Matrix3(Vector3 Row1, Vector3 Row2, Vector3 Row3)
 	A33 = Row3.z;
 }
 // Constructor 3
-Matrix3::Matrix3(double _A11, double _A12, double _A13,
-	double _A21, double _A22, double _A23,
-	double _A31, double _A32, double _A33)
-{// to allow nine double values
+Matrix3::Matrix3(float _A11, float _A12, float _A13,
+	float _A21, float _A22, float _A23,
+	float _A31, float _A32, float _A33)
+{// to allow nine float values
 	A11 = _A11;
 	A12 = _A12;
 	A13 = _A13;
@@ -51,11 +52,22 @@ Vector3 Matrix3::operator *(Vector3 V1)
 		A31 * V1.x + A32 * V1.y + A33 * V1.z);
 }
 
-Vector3 Matrix3::operator *(Vector3 V1)
-{// An overloaded operator * to return the  product of the matrix by a vector
-	return Vector3(A11 * V1.x + A21 * V1.y + A31 * V1.z,
-		A12 * V1.x + A22 * V1.y + A32 * V1.z,
-		A13 * V1.x + A23 * V1.y + A33 * V1.z);
+Matrix3 Matrix3::operator *(Matrix3 M)
+{// An overloaded operator * to return the  product of two matrix
+	Matrix3 answer = Matrix3();
+	answer.A11 = Row(0) * M.Column(0);
+	answer.A12 = Row(0) * M.Column(1);
+	answer.A13 = Row(0) * M.Column(2);
+
+	answer.A21 = Row(1) * M.Column(0);
+	answer.A22 = Row(1) * M.Column(1);
+	answer.A23 = Row(1) * M.Column(2);
+
+	answer.A31 = Row(2) * M.Column(0);
+	answer.A32 = Row(2) * M.Column(1);
+	answer.A33 = Row(2) * M.Column(2);
+
+	return answer;
 }
 
 Matrix3 Matrix3::Transpose(Matrix3 M1)
@@ -95,26 +107,10 @@ Matrix3 Matrix3::operator *(double x)
 	return answer;
 }
 
-Matrix3 Matrix3::operator *(Matrix3 M)
-{// An overloaded operator * to return the  product of two matrix
-	Matrix3 answer = Matrix3();
-	answer.A11 = Row(0) * M.Column(0);
-	answer.A12 = Row(0) * M.Column(1);
-	answer.A13 = Row(0) * M.Column(2);
-
-	answer.A21 = Row(1) * M.Column(0);
-	answer.A22 = Row(1) * M.Column(1);
-	answer.A23 = Row(1) * M.Column(2);
-
-	answer.A31 = Row(2) * M.Column(0);
-	answer.A32 = Row(2) * M.Column(1);
-	answer.A33 = Row(2) * M.Column(2);
-
-	return answer;
-}
 
 
-double Matrix3::Determinant(Matrix3 M1)
+
+float Matrix3::Determinant(Matrix3 M1)
 {// method to return the determinant of a 3x3 matrix
 	//                     aei      -     ahf                  + dhc                     - gec                      +    gbh                    -     dbi   
 	return M1.A11 * M1.A22 * M1.A33 - M1.A11 * M1.A32 * M1.A23 + M1.A21 * M1.A32 * M1.A13 - M1.A31 * M1.A22 * M1.A13 + M1.A31 * M1.A12 * M1.A23 - M1.A21 * M1.A12 * M1.A33;
@@ -153,12 +149,12 @@ Vector3 Matrix3::Column(int i)
 Matrix3 Matrix3::Inverse(Matrix3 M1)
 {
 	// method to return the inverse of a matrix if exists else zero vector
-	double det = Determinant(M1);
+	float det = Determinant(M1);
 	if (det == 0)
 		return Matrix3();
 	else
 	{
-		double scale = 1 / det;
+		float scale = 1 / det;
 		Matrix3 answer = Matrix3();
 		answer.A11 = scale * (M1.A22 * M1.A33 - M1.A23 * M1.A32); // ei-fh
 		answer.A12 = scale * (M1.A13 * M1.A32 - M1.A12 * M1.A33); // ch-bi
@@ -180,7 +176,7 @@ Matrix3 Matrix3::Inverse(Matrix3 M1)
 
 Matrix3 Matrix3::Rotation(int _angle)
 {
-	double radians = PI / 180 * _angle;
+	float radians = PI / 180 * _angle;
 	Matrix3 answer = Matrix3();
 	answer.A11 = cos(radians);
 	answer.A12 = sin(radians);
@@ -212,14 +208,14 @@ Matrix3 Matrix3::Translate(int dx, int dy)
 	return answer;
 }
 
-static Matrix3 Matrix3::Matrix3Scale(int dx, int dy)
+Matrix3 Matrix3::Matrix3Scale(int dx, int dy)
 {
 	Matrix3 answer = Matrix3();
-	answer.A11 = (double)dx / 100;
+	answer.A11 = (float)dx / 100;
 	answer.A12 = 0;
 	answer.A13 = 0;
 	answer.A21 = 0;
-	answer.A22 = (double)dy / 100;
+	answer.A22 = (float)dy / 100;
 	answer.A23 = 0;
 	answer.A31 = 0;
 	answer.A32 = 0;
@@ -228,14 +224,14 @@ static Matrix3 Matrix3::Matrix3Scale(int dx, int dy)
 	return answer;
 }
 
-Matrix3 Matrix3::operator -(Matrix3 M1)
+Matrix3 Matrix3::operator -()
 {
-	return -1 * M1;
+	return this->operator*(-1);
 }
 
 Matrix3 Matrix3::RotationX(int _angle)
 {
-	double radians = PI / 180 * _angle;
+	float radians = PI / 180 * _angle;
 	Matrix3 answer = Matrix3();
 	answer.A11 = 1;
 	answer.A12 = 0;
@@ -251,7 +247,7 @@ Matrix3 Matrix3::RotationX(int _angle)
 }
 Matrix3 Matrix3::RotationY(int _angle)
 {
-	double radians = PI / 180 * _angle;
+	float radians = PI / 180 * _angle;
 	Matrix3 answer = Matrix3();
 	answer.A11 = cos(radians);
 	answer.A12 = 0;
@@ -267,7 +263,7 @@ Matrix3 Matrix3::RotationY(int _angle)
 }
 Matrix3 Matrix3::RotationZ(int _angle)
 {
-	double radians = PI / 180 * _angle;
+	float radians = PI / 180 * _angle;
 	Matrix3 answer = Matrix3();
 	answer.A11 = cos(radians);
 	answer.A12 = -sin(radians);
@@ -285,15 +281,15 @@ Matrix3 Matrix3::RotationZ(int _angle)
 Matrix3 Matrix3::Scale3D(int dx)
 {
 	Matrix3 answer = Matrix3();
-	answer.A11 = (double)dx / 100;
+	answer.A11 = (float)dx / 100;
 	answer.A12 = 0;
 	answer.A13 = 0;
 	answer.A21 = 0;
-	answer.A22 = (double)dx / 100;
+	answer.A22 = (float)dx / 100;
 	answer.A23 = 0;
 	answer.A31 = 0;
 	answer.A32 = 0;
-	answer.A33 = (double)dx / 100;
+	answer.A33 = (float)dx / 100;
 
 	return answer;
 }
