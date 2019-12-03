@@ -1,4 +1,3 @@
-
 #include "Matrix3.h"
 #define PI           3.14159265358979323846
 
@@ -174,7 +173,7 @@ Matrix3 Matrix3::Inverse(Matrix3 M1)
 
 }
 
-Matrix3 Matrix3::Rotation(int _angle)
+Matrix3 Matrix3::Rotation(float _angle)
 {
 	float radians = PI / 180 * _angle;
 	Matrix3 answer = Matrix3();
@@ -192,7 +191,7 @@ Matrix3 Matrix3::Rotation(int _angle)
 }
 
 
-Matrix3 Matrix3::Translate(int dx, int dy)
+Matrix3 Matrix3::Translate(float dx, float dy)
 {
 	Matrix3 answer = Matrix3();
 	answer.A11 = 1;
@@ -208,7 +207,7 @@ Matrix3 Matrix3::Translate(int dx, int dy)
 	return answer;
 }
 
-Matrix3 Matrix3::Matrix3Scale(int dx, int dy)
+Matrix3 Matrix3::Matrix3Scale(float dx, float dy)
 {
 	Matrix3 answer = Matrix3();
 	answer.A11 = (float)dx / 100;
@@ -229,7 +228,7 @@ Matrix3 Matrix3::operator -()
 	return this->operator*(-1);
 }
 
-Matrix3 Matrix3::RotationX(int _angle)
+Matrix3 Matrix3::RotationX(float _angle)
 {
 	float radians = PI / 180 * _angle;
 	Matrix3 answer = Matrix3();
@@ -245,7 +244,7 @@ Matrix3 Matrix3::RotationX(int _angle)
 
 	return answer;
 }
-Matrix3 Matrix3::RotationY(int _angle)
+Matrix3 Matrix3::RotationY(float _angle)
 {
 	float radians = PI / 180 * _angle;
 	Matrix3 answer = Matrix3();
@@ -261,7 +260,7 @@ Matrix3 Matrix3::RotationY(int _angle)
 
 	return answer;
 }
-Matrix3 Matrix3::RotationZ(int _angle)
+Matrix3 Matrix3::RotationZ(float _angle)
 {
 	float radians = PI / 180 * _angle;
 	Matrix3 answer = Matrix3();
@@ -278,7 +277,7 @@ Matrix3 Matrix3::RotationZ(int _angle)
 	return answer;
 }
 
-Matrix3 Matrix3::Scale3D(int dx)
+Matrix3 Matrix3::Scale3D(float dx)
 {
 	Matrix3 answer = Matrix3();
 	answer.A11 = (float)dx / 100;
@@ -293,3 +292,12 @@ Matrix3 Matrix3::Scale3D(int dx)
 
 	return answer;
 }
+
+
+//String constructor
+std::string Matrix3::ToString() const
+{
+	return std::string("\n" + std::to_string(A11) + " " + std::to_string(A12) + " " + std::to_string(A13) + " \n" + std::to_string(A21) + " "
+		+ std::to_string(A22) + " " + std::to_string(A23) + " \n" + std::to_string(A31) + " " + std::to_string(A32) + " " + std::to_string(A33));
+}
+

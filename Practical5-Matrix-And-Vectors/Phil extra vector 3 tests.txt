@@ -1,0 +1,20 @@
+Phil Tests:
+
+Vector 3 tests:
+
+vector1{0,2,-5}
+
+vector2{-2,-2,-5}
+
+vector3{2,-2,-5}
+
+
+Matrix rotation in z axis by 23.21f * v3 = 
+
+
+Quaternion rotation in z axis by 5.0f * v3 = 
+
+
+Find lenght of v1  = roughly 5.38
+
+lenght squared of v2  = roughly 33
