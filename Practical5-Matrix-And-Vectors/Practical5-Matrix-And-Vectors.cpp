@@ -14,12 +14,76 @@
 
 int main()
 {
+
+	//-------------------------------------------------------------------------------------------------
+
+
+	Vector3 v1{ 0,2,-5 };
+	Vector3 v2{ -2,-2,5 };
+	Vector3 v3{ 2,-2,-5 };
+	float resultFloat;
+	Vector2 vector2Result{};
+	Vector3 vector3Result{};
+
+
+
+	std::cout << "\n\n\n\n\n\n----------------------------\n";
+	std::cout << "Extra tests on v1, v2 and v3 \n\n";
+
+
+	std::cout << "Length of v1          " << std::endl;
+	std::cout << " Expected result : ";
+	std::cout << "( 5.385 \t)\n";
+	std::cout << " Actual result : ";
+	resultFloat = v1.Length();
+	std::cout << std::to_string(resultFloat) << std::endl;
+	std::cout << "----------------------------" << std::endl;
+
+	std::cout << "Length squared of v2    " << std::endl;
+	//vector3One = { 7.0f, 8.0f, 9.0f };
+	std::cout << " Expected result : ";
+	std::cout << "( 33.00 \t)\n";
+	std::cout << " Actual result : ";
+	resultFloat = v2.LengthSquared();
+	std::cout << std::to_string(resultFloat) << std::endl;
+	std::cout << "----------------------------" << std::endl;
+
+	std::cout << " V3 Matrix rotation in z axis by 23.21 \n ";
+	std::cout << " Expected result : ";
+	std::cout << " ( 2.626,   -1.049,    -5 \t)\n";
+	std::cout << " Actual result : ";
+	vector3Result = Matrix3::RotationZ(23.21f) * v3;
+	std::cout << vector3Result.ToString();
+	std::cout << "\n----------------------------\n" << std::endl;
+
+
+	//std::cout << " V3 Quaternion rotation in z axis by 5.0 \n ";
+	//std::cout << " Expected result : ";
+	//std::cout << " ( ,   ,     \t)\n";
+	//std::cout << " Actual result : ";
+	////vector3Result = Quaternion::Rotate(5.0f) * v3;  //v3.Rotate(Vector3 pt, int _angle)
+	//std::cout << vector3Result.ToString();
+
+
+	std::cout << "\n\n\n\n----------------------------\n";
+
+	system("PAUSE");
+
+
+
+
+
+
+
+
+
+
 	Vector2 vector2One{};
 	Vector2 vector2Two{};
-	Vector2 vector2Result{};
+	vector2Result= {0, 0};
 	Matrix3 matrix3{};
 
-	float resultFloat;
+	resultFloat = 0.0f;
 
 
 
@@ -136,9 +200,9 @@ int main()
 
 	Vector3 vector3One{};
 	Vector3 vector3Two{};
-	Vector3 vector3Result{};
+	vector3Result = { 0, 0, 0};
 
-	std::cout << "\n\n\n\n----------------------------\n";
+	std::cout << "\n\n\n\n\n----------------------------\n";
 	std::cout << "Vector 3 Default Constructor ";
 	std::cout << "\nExpected result : ( 0 ,  0 ,  0)";
 	std::cout << "\nActual result : " + std::to_string(vector3One.x) << " , " + std::to_string(vector3One.y) << " , " + std::to_string(vector3One.z);
@@ -258,7 +322,7 @@ int main()
 
 
 
-	std::cout << "\n\n\n\n\n\nMatrix 3 Null/default constructor" << std::endl;
+	std::cout << "\n\n\n\n\n\n\nMatrix 3 Null/default constructor" << std::endl;
 	std::cout << " Expected result : \n";
 	std::cout << " 0.0     ,0.0     ,0.0     " << std::endl;
 	std::cout << " 0.0     ,0.0     ,0.0     " << std::endl;
@@ -536,49 +600,6 @@ int main()
 
 
 
-
-	//-------------------------------------------------------------------------------------------------
-
-
-	Vector3 v1{ 0,2,-5 };
-	Vector3 v2{ -2,-2,5 };
-	Vector3 v3{ 2,-2,-5 };
-
-	
-
-
-	std::cout << "\n\n\n\n\n\n----------------------------\n";
-	std::cout << "Extra tests on v1, v2 and v3 \n\n";
-
-
-	std::cout << "Length of v1          " << std::endl;
-	std::cout << " Expected result : ";
-	std::cout << "( 5.385 \t)\n";
-	std::cout << " Actual result : ";
-	resultFloat = v1.Length();
-	std::cout << std::to_string(resultFloat) << std::endl;
-	std::cout << "----------------------------" << std::endl;
-
-	std::cout << "Length squared of v2    " << std::endl;
-	vector3One = { 7.0f, 8.0f, 9.0f };
-	std::cout << " Expected result : ";
-	std::cout << "( 33.00 \t)\n";
-	std::cout << " Actual result : ";
-	resultFloat = v2.LengthSquared();
-	std::cout << std::to_string(resultFloat) << std::endl;
-	std::cout << "----------------------------" << std::endl;
-
-	std::cout << " V3 Matrix rotation in z axis by 23.21 \n ";
-	std::cout << " Expected result : ";
-	std::cout << " ( -12.5      , -16.0  \t)\n";
-	std::cout << " Actual result : ";
-	vector3Result = Matrix3::RotationZ(23.21f) * v3;
-	std::cout << vector2Result.ToString();
-
-
-	std::cout << "\n\n\n\n----------------------------\n";
-
-	system("PAUSE");
 
 }
 
