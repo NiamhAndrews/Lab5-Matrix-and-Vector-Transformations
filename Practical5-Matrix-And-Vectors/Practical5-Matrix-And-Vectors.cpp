@@ -63,20 +63,23 @@ int main()
 	std::cout << vector3Result.ToString();
 	std::cout << "\n----------------------------" << std::endl;
 
-	std::cout << " V3 Quaternion rotation in z axis by 5.0 \n ";
-	std::cout << " Expected result : ";
-	std::cout << " ( 2.166,   -1.818,    -5 \t)\n";
-	std::cout << " Actual result : ";
-	Quaternion q1 = { 0.0f, 0.0f, 0.0f, 1.0f };
-	std::cout << q1.Rotate(v3, 5).ToString();
-	std::cout << "\n----------------------------" << std::endl;
-
 	std::cout << " V3 Quaternion rotation in z axis by 23.21 \n ";
 	std::cout << " Expected result : ";
 	std::cout << " ( 2.622,   -1.059,    -5 \t)\n";
 	std::cout << " Actual result : ";
+	Quaternion q1 = { 0.0f, 0.0f, 0.0f, 1.0f };
+	std::cout << q1.Rotate(v3, 23.21f).ToString();
+	std::cout << "\n----------------------------" << std::endl;
+
+	std::cout << " V3 Quaternion rotation in z axis by 5.0 \n ";
+	std::cout << " Expected result : ";
+	std::cout << " ( 2.166,   -1.818,    -5 \t)\n";
+	std::cout << " Actual result : ";
 	q1 = { 0.0f, 0.0f, 0.0f, 1.0f };
-	std::cout << q1.Rotate(v3, 23.21).ToString();
+	std::cout << q1.Rotate(v3, 5.0f).ToString();
+
+
+
 
 
 	std::cout << "\n\n\n\n\n----------------------------\n";
@@ -91,6 +94,7 @@ int main()
 
 
 
+	//--------------------------------------------------------------------------Vector Two
 
 	Vector2 vector2One{};
 	Vector2 vector2Two{};
@@ -210,7 +214,7 @@ int main()
 
 
 
-	//----------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------- Vector 3
 
 	Vector3 vector3One{};
 	Vector3 vector3Two{};
@@ -327,7 +331,7 @@ int main()
 
 
 
-	//----------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------- Matrix
 
 
 	Matrix3 matrix3One{};
