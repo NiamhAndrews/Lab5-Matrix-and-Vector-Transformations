@@ -31,7 +31,7 @@ int main()
 	std::cout << "Extra tests on v1, v2 and v3 \n\n";
 
 
-	std::cout << "Length of v1          " << std::endl;
+	std::cout << " Length of v1          " << std::endl;
 	std::cout << " Expected result : ";
 	std::cout << "( 5.385 \t)\n";
 	std::cout << " Actual result : ";
@@ -39,8 +39,7 @@ int main()
 	std::cout << std::to_string(resultFloat) << std::endl;
 	std::cout << "----------------------------" << std::endl;
 
-	std::cout << "Length squared of v2    " << std::endl;
-	//vector3One = { 7.0f, 8.0f, 9.0f };
+	std::cout << " Length squared of v2    " << std::endl;
 	std::cout << " Expected result : ";
 	std::cout << "( 33.00 \t)\n";
 	std::cout << " Actual result : ";
@@ -54,18 +53,33 @@ int main()
 	std::cout << " Actual result : ";
 	vector3Result = Matrix3::RotationZ(23.21f) * v3;
 	std::cout << vector3Result.ToString();
-	std::cout << "\n----------------------------\n" << std::endl;
+	std::cout << "\n----------------------------" << std::endl;
+
+	std::cout << " V3 Matrix rotation in z axis by 5 \n ";
+	std::cout << " Expected result : ";
+	std::cout << " ( 2.166,   -1.818,    -5 \t)\n";
+	std::cout << " Actual result : ";
+	vector3Result = Matrix3::RotationZ(5.0f) * v3;
+	std::cout << vector3Result.ToString();
+	std::cout << "\n----------------------------" << std::endl;
+
+	std::cout << " V3 Quaternion rotation in z axis by 5.0 \n ";
+	std::cout << " Expected result : ";
+	std::cout << " ( 2.166,   -1.818,    -5 \t)\n";
+	std::cout << " Actual result : ";
+	Quaternion q1 = { 0.0f, 0.0f, 0.0f, 1.0f };
+	std::cout << q1.Rotate(v3, 5).ToString();
+	std::cout << "\n----------------------------" << std::endl;
+
+	std::cout << " V3 Quaternion rotation in z axis by 23.21 \n ";
+	std::cout << " Expected result : ";
+	std::cout << " ( 2.622,   -1.059,    -5 \t)\n";
+	std::cout << " Actual result : ";
+	q1 = { 0.0f, 0.0f, 0.0f, 1.0f };
+	std::cout << q1.Rotate(v3, 23.21).ToString();
 
 
-	//std::cout << " V3 Quaternion rotation in z axis by 5.0 \n ";
-	//std::cout << " Expected result : ";
-	//std::cout << " ( ,   ,     \t)\n";
-	//std::cout << " Actual result : ";
-	////vector3Result = Quaternion::Rotate(5.0f) * v3;  //v3.Rotate(Vector3 pt, int _angle)
-	//std::cout << vector3Result.ToString();
-
-
-	std::cout << "\n\n\n\n----------------------------\n";
+	std::cout << "\n\n\n\n\n----------------------------\n";
 
 	system("PAUSE");
 
